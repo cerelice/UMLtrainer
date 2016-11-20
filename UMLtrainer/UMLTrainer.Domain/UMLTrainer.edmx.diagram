@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f3732db9e1ae43c59af1d3ce098fc711" Name="Diagram1" ZoomLevel="21">
+        <EntityTypeShape EntityType="UMLTrainerModel.Arrow" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Diagram" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.DiagramType" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Element" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Lection" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Node" Width="1.5" PointX="5.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.NodeValue" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Relation" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Shape" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Task" Width="1.5" PointX="8.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.TaskElement" Width="1.5" PointX="10.5" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.TaskResult" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.Test" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.TestResult" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.TestVariant" Width="1.5" PointX="10.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.User" Width="1.5" PointX="3.75" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="UMLTrainerModel.UserType" Width="1.5" PointX="1.5" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="UMLTrainerModel.R_9" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_10" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_13" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_6" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_33" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_3" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_4" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_16" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_17" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_32" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_12" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_5" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_7" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_8" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_14" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_31" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_34" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_15" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_30" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_24" ManuallyRouted="false" />
+        <AssociationConnector Association="UMLTrainerModel.R_20" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
