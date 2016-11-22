@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "noEmitOnError": true,
+    "removeComments": false,
+    "sourceMap": true,
+    "target": "es5",
+    "rootDir": "./App",
+    "outDir": "./wwwroot/app"
+  },
+  "exclude": [
+    "node_modules",
+    "bower_components",
+    "bin",
+    "wwwroot",
+    "**/*.json",
+    "**/*.cs",
+    "**/*.config",
+    "**/*.html",
+    "**/*.cshtml",
+    "**/*.js"
+  ],
+  "include": [
+    "App",
+    "typings"
+  ],
+  "compileOnSave": false
+}

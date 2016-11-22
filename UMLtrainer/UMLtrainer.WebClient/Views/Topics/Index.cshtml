@@ -1,0 +1,16 @@
+﻿<md-grid-list md-cols="3" md-row-height="140px" md-gutter="4px">
+    <md-grid-tile ng-repeat="topic in ctrl.topics"
+                  md-colspan="1">
+        <md-card flex>
+            <md-card-header>
+                <md-card-header-text>
+                    <span class="md-title">{{topic.name}}</span>
+                </md-card-header-text>
+            </md-card-header>
+            <md-card-content>
+                <p style="height: 2.5em; overflow: hidden">{{topic.description}}</p>
+            </md-card-content>
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>
+<!--<textarea ui-tinymce="ctrl.tinymceOptions" ng-model="ctrl.tinymceModel"></textarea>-->

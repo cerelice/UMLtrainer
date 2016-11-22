@@ -1,0 +1,26 @@
+﻿<md-content layout="row" layout-align="center center">
+    <div flex="25"></div>
+    <md-card flex="40">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Login in UML trainer</span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <div class="md-form" layout="column">
+                <md-input-container>
+                    <label>Username</label>
+                    <input ng-model="ctrl.username">
+                </md-input-container>
+                <md-input-container>
+                    <label>Password</label>
+                    <input ng-model="ctrl.password" type="password">
+                </md-input-container>
+            </div>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-raised md-primary" ng-click="ctrl.login()">Login</md-button>
+        </md-card-actions>
+    </md-card>
+    <div flex="25"></div>
+</md-content>
