@@ -1,0 +1,1240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UMLTrainerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Arrow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="EndForm" Type="char" MaxLength="18" />
+          <Property Name="StartForm" Type="char" MaxLength="18" />
+          <Property Name="LineForm" Type="char" MaxLength="18" />
+          <Property Name="Text" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Diagram">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="DiagramTypeId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="DiagramType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Element">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ShapeId" Type="char" MaxLength="18" />
+          <Property Name="DiagramTypeId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="Lection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Data" Type="char" MaxLength="18" />
+          <Property Name="CreatorId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="Node">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="ElementId" Type="char" MaxLength="18" />
+          <Property Name="DiagramId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="NodeValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+          <Property Name="PropertyId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="Relation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="ParentId" Type="char" MaxLength="18" />
+          <Property Name="ChildId" Type="char" MaxLength="18" />
+          <Property Name="ArrowId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="Shape">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="DiagramId" Type="char" MaxLength="18" />
+          <Property Name="TopicId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="TaskElement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="NodeId" Type="char" MaxLength="18" />
+          <Property Name="TaskId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="TaskResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="IsPassed" Type="binary" MaxLength="1" />
+          <Property Name="TaskId" Type="char" MaxLength="18" />
+          <Property Name="UserId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Question" Type="nvarchar(max)" />
+          <Property Name="IsOneAnswer" Type="binary" MaxLength="1" />
+          <Property Name="TopicId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="TestResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="UserId" Type="char" MaxLength="18" />
+          <Property Name="IsPassed" Type="binary" MaxLength="1" />
+          <Property Name="TestId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="TestVariant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Text" Type="char" MaxLength="18" />
+          <Property Name="IsCorrect" Type="binary" MaxLength="1" />
+          <Property Name="TestId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="80" />
+          <Property Name="UserTypeId" Type="char" MaxLength="18" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="char" MaxLength="18" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="R_10">
+          <End Role="DiagramType" Type="Self.DiagramType" Multiplicity="0..1" />
+          <End Role="Diagram" Type="Self.Diagram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiagramType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Diagram">
+              <PropertyRef Name="DiagramTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="TaskElement" Type="Self.TaskElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskElement">
+              <PropertyRef Name="NodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_13">
+          <End Role="Diagram" Type="Self.Diagram" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagram">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="DiagramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_14">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="TaskElement" Type="Self.TaskElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskElement">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_15">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="TestVariant" Type="Self.TestVariant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestVariant">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_16">
+          <End Role="Lection" Type="Self.Lection" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="Lection" Type="Self.Lection" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_20">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_24">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="TestResult" Type="Self.TestResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestResult">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="Shape" Type="Self.Shape" Multiplicity="0..1" />
+          <End Role="Element" Type="Self.Element" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shape">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Element">
+              <PropertyRef Name="ShapeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_30">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="TestResult" Type="Self.TestResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestResult">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_31">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="TaskResult" Type="Self.TaskResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskResult">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_32">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lection" Type="Self.Lection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lection">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_33">
+          <End Role="DiagramType" Type="Self.DiagramType" Multiplicity="0..1" />
+          <End Role="Element" Type="Self.Element" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiagramType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Element">
+              <PropertyRef Name="DiagramTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_34">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="TaskResult" Type="Self.TaskResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskResult">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_4">
+          <End Role="Element" Type="Self.Element" Multiplicity="0..1" />
+          <End Role="Node" Type="Self.Node" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Element">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Node">
+              <PropertyRef Name="ElementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_5">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="NodeValue" Type="Self.NodeValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NodeValue">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_6">
+          <End Role="Diagram" Type="Self.Diagram" Multiplicity="0..1" />
+          <End Role="Node" Type="Self.Node" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagram">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Node">
+              <PropertyRef Name="DiagramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="Relation" Type="Self.Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relation">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="Relation" Type="Self.Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relation">
+              <PropertyRef Name="ChildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_9">
+          <End Role="Arrow" Type="Self.Arrow" Multiplicity="0..1" />
+          <End Role="Relation" Type="Self.Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arrow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relation">
+              <PropertyRef Name="ArrowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UMLTrainerModelStoreContainer">
+          <EntitySet Name="Arrow" EntityType="Self.Arrow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Diagram" EntityType="Self.Diagram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DiagramType" EntityType="Self.DiagramType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Element" EntityType="Self.Element" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lection" EntityType="Self.Lection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Node" EntityType="Self.Node" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NodeValue" EntityType="Self.NodeValue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Relation" EntityType="Self.Relation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shape" EntityType="Self.Shape" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskElement" EntityType="Self.TaskElement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskResult" EntityType="Self.TaskResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Test" EntityType="Self.Test" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestResult" EntityType="Self.TestResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestVariant" EntityType="Self.TestVariant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="DiagramType" EntitySet="DiagramType" />
+            <End Role="Diagram" EntitySet="Diagram" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="TaskElement" EntitySet="TaskElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_13" Association="Self.R_13">
+            <End Role="Diagram" EntitySet="Diagram" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="R_14" Association="Self.R_14">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="TaskElement" EntitySet="TaskElement" />
+          </AssociationSet>
+          <AssociationSet Name="R_15" Association="Self.R_15">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="TestVariant" EntitySet="TestVariant" />
+          </AssociationSet>
+          <AssociationSet Name="R_16" Association="Self.R_16">
+            <End Role="Lection" EntitySet="Lection" />
+            <End Role="Test" EntitySet="Test" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="Self.R_17">
+            <End Role="Lection" EntitySet="Lection" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="R_20" Association="Self.R_20">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="R_24" Association="Self.R_24">
+            <End Role="User" EntitySet="User" />
+            <End Role="TestResult" EntitySet="TestResult" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="Self.R_3">
+            <End Role="Shape" EntitySet="Shape" />
+            <End Role="Element" EntitySet="Element" />
+          </AssociationSet>
+          <AssociationSet Name="R_30" Association="Self.R_30">
+            <End Role="Test" EntitySet="Test" />
+            <End Role="TestResult" EntitySet="TestResult" />
+          </AssociationSet>
+          <AssociationSet Name="R_31" Association="Self.R_31">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="TaskResult" EntitySet="TaskResult" />
+          </AssociationSet>
+          <AssociationSet Name="R_32" Association="Self.R_32">
+            <End Role="User" EntitySet="User" />
+            <End Role="Lection" EntitySet="Lection" />
+          </AssociationSet>
+          <AssociationSet Name="R_33" Association="Self.R_33">
+            <End Role="DiagramType" EntitySet="DiagramType" />
+            <End Role="Element" EntitySet="Element" />
+          </AssociationSet>
+          <AssociationSet Name="R_34" Association="Self.R_34">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="TaskResult" EntitySet="TaskResult" />
+          </AssociationSet>
+          <AssociationSet Name="R_4" Association="Self.R_4">
+            <End Role="Element" EntitySet="Element" />
+            <End Role="Node" EntitySet="Node" />
+          </AssociationSet>
+          <AssociationSet Name="R_5" Association="Self.R_5">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="NodeValue" EntitySet="NodeValue" />
+          </AssociationSet>
+          <AssociationSet Name="R_6" Association="Self.R_6">
+            <End Role="Diagram" EntitySet="Diagram" />
+            <End Role="Node" EntitySet="Node" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="Self.R_7">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="Relation" EntitySet="Relation" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="Self.R_8">
+            <End Role="Node" EntitySet="Node" />
+            <End Role="Relation" EntitySet="Relation" />
+          </AssociationSet>
+          <AssociationSet Name="R_9" Association="Self.R_9">
+            <End Role="Arrow" EntitySet="Arrow" />
+            <End Role="Relation" EntitySet="Relation" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UMLTrainerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Arrow">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EndForm" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="StartForm" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="LineForm" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Relations" Relationship="Self.R_9" FromRole="Arrow" ToRole="Relation" />
+        </EntityType>
+        <EntityType Name="Diagram">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiagramTypeId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DiagramType" Relationship="Self.R_10" FromRole="Diagram" ToRole="DiagramType" />
+          <NavigationProperty Name="Tasks" Relationship="Self.R_13" FromRole="Diagram" ToRole="Task" />
+          <NavigationProperty Name="Nodes" Relationship="Self.R_6" FromRole="Diagram" ToRole="Node" />
+        </EntityType>
+        <EntityType Name="DiagramType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Diagrams" Relationship="Self.R_10" FromRole="DiagramType" ToRole="Diagram" />
+          <NavigationProperty Name="Elements" Relationship="Self.R_33" FromRole="DiagramType" ToRole="Element" />
+        </EntityType>
+        <EntityType Name="Element">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShapeId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="DiagramTypeId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DiagramType" Relationship="Self.R_33" FromRole="Element" ToRole="DiagramType" />
+          <NavigationProperty Name="Shape" Relationship="Self.R_3" FromRole="Element" ToRole="Shape" />
+          <NavigationProperty Name="Nodes" Relationship="Self.R_4" FromRole="Element" ToRole="Node" />
+        </EntityType>
+        <EntityType Name="Lection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Data" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="CreatorId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Tests" Relationship="Self.R_16" FromRole="Lection" ToRole="Test" />
+          <NavigationProperty Name="Tasks" Relationship="Self.R_17" FromRole="Lection" ToRole="Task" />
+          <NavigationProperty Name="User" Relationship="Self.R_32" FromRole="Lection" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Node">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ElementId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="DiagramId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Diagram" Relationship="Self.R_6" FromRole="Node" ToRole="Diagram" />
+          <NavigationProperty Name="Element" Relationship="Self.R_4" FromRole="Node" ToRole="Element" />
+          <NavigationProperty Name="TaskElements" Relationship="Self.R_12" FromRole="Node" ToRole="TaskElement" />
+          <NavigationProperty Name="NodeValues" Relationship="Self.R_5" FromRole="Node" ToRole="NodeValue" />
+          <NavigationProperty Name="Relations" Relationship="Self.R_7" FromRole="Node" ToRole="Relation" />
+          <NavigationProperty Name="Relations1" Relationship="Self.R_8" FromRole="Node" ToRole="Relation" />
+        </EntityType>
+        <EntityType Name="NodeValue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Node" Relationship="Self.R_5" FromRole="NodeValue" ToRole="Node" />
+        </EntityType>
+        <EntityType Name="Relation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ParentId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="ChildId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="ArrowId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Arrow" Relationship="Self.R_9" FromRole="Relation" ToRole="Arrow" />
+          <NavigationProperty Name="Node" Relationship="Self.R_7" FromRole="Relation" ToRole="Node" />
+          <NavigationProperty Name="Node1" Relationship="Self.R_8" FromRole="Relation" ToRole="Node" />
+        </EntityType>
+        <EntityType Name="Shape">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Elements" Relationship="Self.R_3" FromRole="Shape" ToRole="Element" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DiagramId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="TopicId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Diagram" Relationship="Self.R_13" FromRole="Task" ToRole="Diagram" />
+          <NavigationProperty Name="Lection" Relationship="Self.R_17" FromRole="Task" ToRole="Lection" />
+          <NavigationProperty Name="TaskElements" Relationship="Self.R_14" FromRole="Task" ToRole="TaskElement" />
+          <NavigationProperty Name="TaskResults" Relationship="Self.R_31" FromRole="Task" ToRole="TaskResult" />
+        </EntityType>
+        <EntityType Name="TaskElement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NodeId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="TaskId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Node" Relationship="Self.R_12" FromRole="TaskElement" ToRole="Node" />
+          <NavigationProperty Name="Task" Relationship="Self.R_14" FromRole="TaskElement" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="TaskResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="IsPassed" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="TaskId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="UserId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Task" Relationship="Self.R_31" FromRole="TaskResult" ToRole="Task" />
+          <NavigationProperty Name="UserType" Relationship="Self.R_34" FromRole="TaskResult" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsOneAnswer" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="TopicId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Lection" Relationship="Self.R_16" FromRole="Test" ToRole="Lection" />
+          <NavigationProperty Name="TestVariants" Relationship="Self.R_15" FromRole="Test" ToRole="TestVariant" />
+          <NavigationProperty Name="TestResults" Relationship="Self.R_30" FromRole="Test" ToRole="TestResult" />
+        </EntityType>
+        <EntityType Name="TestResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="IsPassed" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="TestId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Test" Relationship="Self.R_30" FromRole="TestResult" ToRole="Test" />
+          <NavigationProperty Name="User" Relationship="Self.R_24" FromRole="TestResult" ToRole="User" />
+        </EntityType>
+        <EntityType Name="TestVariant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Text" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="IsCorrect" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="TestId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Test" Relationship="Self.R_15" FromRole="TestVariant" ToRole="Test" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="UserTypeId" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Lections" Relationship="Self.R_32" FromRole="User" ToRole="Lection" />
+          <NavigationProperty Name="TestResults" Relationship="Self.R_24" FromRole="User" ToRole="TestResult" />
+          <NavigationProperty Name="UserType" Relationship="Self.R_20" FromRole="User" ToRole="UserType" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="18" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TaskResults" Relationship="Self.R_34" FromRole="UserType" ToRole="TaskResult" />
+          <NavigationProperty Name="Users" Relationship="Self.R_20" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="R_9">
+          <End Role="Arrow" Type="Self.Arrow" Multiplicity="0..1" />
+          <End Role="Relation" Type="Self.Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Arrow">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relation">
+              <PropertyRef Name="ArrowId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_10">
+          <End Role="DiagramType" Type="Self.DiagramType" Multiplicity="0..1" />
+          <End Role="Diagram" Type="Self.Diagram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiagramType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Diagram">
+              <PropertyRef Name="DiagramTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_13">
+          <End Role="Diagram" Type="Self.Diagram" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagram">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="DiagramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_6">
+          <End Role="Diagram" Type="Self.Diagram" Multiplicity="0..1" />
+          <End Role="Node" Type="Self.Node" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diagram">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Node">
+              <PropertyRef Name="DiagramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_33">
+          <End Role="DiagramType" Type="Self.DiagramType" Multiplicity="0..1" />
+          <End Role="Element" Type="Self.Element" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiagramType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Element">
+              <PropertyRef Name="DiagramTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="Shape" Type="Self.Shape" Multiplicity="0..1" />
+          <End Role="Element" Type="Self.Element" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shape">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Element">
+              <PropertyRef Name="ShapeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_4">
+          <End Role="Element" Type="Self.Element" Multiplicity="0..1" />
+          <End Role="Node" Type="Self.Node" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Element">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Node">
+              <PropertyRef Name="ElementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_16">
+          <End Role="Lection" Type="Self.Lection" Multiplicity="0..1" />
+          <End Role="Test" Type="Self.Test" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Test">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="Lection" Type="Self.Lection" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lection">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="TopicId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_32">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Lection" Type="Self.Lection" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Lection">
+              <PropertyRef Name="CreatorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="TaskElement" Type="Self.TaskElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskElement">
+              <PropertyRef Name="NodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_5">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="NodeValue" Type="Self.NodeValue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NodeValue">
+              <PropertyRef Name="PropertyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="Relation" Type="Self.Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relation">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="Node" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="Relation" Type="Self.Relation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Node">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Relation">
+              <PropertyRef Name="ChildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_14">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="TaskElement" Type="Self.TaskElement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskElement">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_31">
+          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+          <End Role="TaskResult" Type="Self.TaskResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Task">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskResult">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_34">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="TaskResult" Type="Self.TaskResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TaskResult">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_15">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="TestVariant" Type="Self.TestVariant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestVariant">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_30">
+          <End Role="Test" Type="Self.Test" Multiplicity="0..1" />
+          <End Role="TestResult" Type="Self.TestResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Test">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestResult">
+              <PropertyRef Name="TestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_24">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="TestResult" Type="Self.TestResult" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TestResult">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_20">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UMLTrainerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Arrows" EntityType="Self.Arrow" />
+          <EntitySet Name="Diagrams" EntityType="Self.Diagram" />
+          <EntitySet Name="DiagramTypes" EntityType="Self.DiagramType" />
+          <EntitySet Name="Elements" EntityType="Self.Element" />
+          <EntitySet Name="Lections" EntityType="Self.Lection" />
+          <EntitySet Name="Nodes" EntityType="Self.Node" />
+          <EntitySet Name="NodeValues" EntityType="Self.NodeValue" />
+          <EntitySet Name="Relations" EntityType="Self.Relation" />
+          <EntitySet Name="Shapes" EntityType="Self.Shape" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <EntitySet Name="TaskElements" EntityType="Self.TaskElement" />
+          <EntitySet Name="TaskResults" EntityType="Self.TaskResult" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="TestResults" EntityType="Self.TestResult" />
+          <EntitySet Name="TestVariants" EntityType="Self.TestVariant" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="R_9" Association="Self.R_9">
+            <End Role="Arrow" EntitySet="Arrows" />
+            <End Role="Relation" EntitySet="Relations" />
+          </AssociationSet>
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="DiagramType" EntitySet="DiagramTypes" />
+            <End Role="Diagram" EntitySet="Diagrams" />
+          </AssociationSet>
+          <AssociationSet Name="R_13" Association="Self.R_13">
+            <End Role="Diagram" EntitySet="Diagrams" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="R_6" Association="Self.R_6">
+            <End Role="Diagram" EntitySet="Diagrams" />
+            <End Role="Node" EntitySet="Nodes" />
+          </AssociationSet>
+          <AssociationSet Name="R_33" Association="Self.R_33">
+            <End Role="DiagramType" EntitySet="DiagramTypes" />
+            <End Role="Element" EntitySet="Elements" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="Self.R_3">
+            <End Role="Shape" EntitySet="Shapes" />
+            <End Role="Element" EntitySet="Elements" />
+          </AssociationSet>
+          <AssociationSet Name="R_4" Association="Self.R_4">
+            <End Role="Element" EntitySet="Elements" />
+            <End Role="Node" EntitySet="Nodes" />
+          </AssociationSet>
+          <AssociationSet Name="R_16" Association="Self.R_16">
+            <End Role="Lection" EntitySet="Lections" />
+            <End Role="Test" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="Self.R_17">
+            <End Role="Lection" EntitySet="Lections" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+          <AssociationSet Name="R_32" Association="Self.R_32">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Lection" EntitySet="Lections" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="TaskElement" EntitySet="TaskElements" />
+          </AssociationSet>
+          <AssociationSet Name="R_5" Association="Self.R_5">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="NodeValue" EntitySet="NodeValues" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="Self.R_7">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="Relation" EntitySet="Relations" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="Self.R_8">
+            <End Role="Node" EntitySet="Nodes" />
+            <End Role="Relation" EntitySet="Relations" />
+          </AssociationSet>
+          <AssociationSet Name="R_14" Association="Self.R_14">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskElement" EntitySet="TaskElements" />
+          </AssociationSet>
+          <AssociationSet Name="R_31" Association="Self.R_31">
+            <End Role="Task" EntitySet="Tasks" />
+            <End Role="TaskResult" EntitySet="TaskResults" />
+          </AssociationSet>
+          <AssociationSet Name="R_34" Association="Self.R_34">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="TaskResult" EntitySet="TaskResults" />
+          </AssociationSet>
+          <AssociationSet Name="R_15" Association="Self.R_15">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="TestVariant" EntitySet="TestVariants" />
+          </AssociationSet>
+          <AssociationSet Name="R_30" Association="Self.R_30">
+            <End Role="Test" EntitySet="Tests" />
+            <End Role="TestResult" EntitySet="TestResults" />
+          </AssociationSet>
+          <AssociationSet Name="R_24" Association="Self.R_24">
+            <End Role="User" EntitySet="Users" />
+            <End Role="TestResult" EntitySet="TestResults" />
+          </AssociationSet>
+          <AssociationSet Name="R_20" Association="Self.R_20">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UMLTrainerModelStoreContainer" CdmEntityContainer="UMLTrainerEntities">
+          <EntitySetMapping Name="Arrows">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Arrow">
+              <MappingFragment StoreEntitySet="Arrow">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EndForm" ColumnName="EndForm" />
+                <ScalarProperty Name="StartForm" ColumnName="StartForm" />
+                <ScalarProperty Name="LineForm" ColumnName="LineForm" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diagrams">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Diagram">
+              <MappingFragment StoreEntitySet="Diagram">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DiagramTypeId" ColumnName="DiagramTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiagramTypes">
+            <EntityTypeMapping TypeName="UMLTrainerModel.DiagramType">
+              <MappingFragment StoreEntitySet="DiagramType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Elements">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Element">
+              <MappingFragment StoreEntitySet="Element">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShapeId" ColumnName="ShapeId" />
+                <ScalarProperty Name="DiagramTypeId" ColumnName="DiagramTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lections">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Lection">
+              <MappingFragment StoreEntitySet="Lection">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="CreatorId" ColumnName="CreatorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nodes">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Node">
+              <MappingFragment StoreEntitySet="Node">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ElementId" ColumnName="ElementId" />
+                <ScalarProperty Name="DiagramId" ColumnName="DiagramId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NodeValues">
+            <EntityTypeMapping TypeName="UMLTrainerModel.NodeValue">
+              <MappingFragment StoreEntitySet="NodeValue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PropertyId" ColumnName="PropertyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Relations">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Relation">
+              <MappingFragment StoreEntitySet="Relation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="ChildId" ColumnName="ChildId" />
+                <ScalarProperty Name="ArrowId" ColumnName="ArrowId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shapes">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Shape">
+              <MappingFragment StoreEntitySet="Shape">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="DiagramId" ColumnName="DiagramId" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskElements">
+            <EntityTypeMapping TypeName="UMLTrainerModel.TaskElement">
+              <MappingFragment StoreEntitySet="TaskElement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NodeId" ColumnName="NodeId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskResults">
+            <EntityTypeMapping TypeName="UMLTrainerModel.TaskResult">
+              <MappingFragment StoreEntitySet="TaskResult">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="UMLTrainerModel.Test">
+              <MappingFragment StoreEntitySet="Test">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="IsOneAnswer" ColumnName="IsOneAnswer" />
+                <ScalarProperty Name="TopicId" ColumnName="TopicId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestResults">
+            <EntityTypeMapping TypeName="UMLTrainerModel.TestResult">
+              <MappingFragment StoreEntitySet="TestResult">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestVariants">
+            <EntityTypeMapping TypeName="UMLTrainerModel.TestVariant">
+              <MappingFragment StoreEntitySet="TestVariant">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="IsCorrect" ColumnName="IsCorrect" />
+                <ScalarProperty Name="TestId" ColumnName="TestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UMLTrainerModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="UMLTrainerModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
