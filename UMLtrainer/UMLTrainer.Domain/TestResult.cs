@@ -19,7 +19,6 @@ namespace UMLTrainer.Domain
         public byte[] IsPassed { get; set; }
         public string TestId { get; set; }
     
-        public virtual Test Test { get; set; }
-        public virtual User User { get; set; }
+        public virtual SystemUser SystemUser { get; set; }
     }
 }

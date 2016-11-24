@@ -66,9 +66,6 @@
     <Compile Include="Element.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
-    <Compile Include="Lection.cs">
-      <DependentUpon>UMLTrainer.tt</DependentUpon>
-    </Compile>
     <Compile Include="Node.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
@@ -83,6 +80,9 @@
     <Compile Include="Shape.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="SystemUser.cs">
+      <DependentUpon>UMLTrainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="Task.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
@@ -95,10 +95,16 @@
     <Compile Include="Test.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="TestForTopic.cs">
+      <DependentUpon>UMLTrainer.tt</DependentUpon>
+    </Compile>
     <Compile Include="TestResult.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
     <Compile Include="TestVariant.cs">
+      <DependentUpon>UMLTrainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Topic.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
     <Compile Include="UMLTrainer.Context.cs">
@@ -115,9 +121,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UMLTrainer.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="User.cs">
-      <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
     <Compile Include="UserType.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>

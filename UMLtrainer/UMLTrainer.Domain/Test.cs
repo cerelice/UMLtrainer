@@ -18,18 +18,16 @@ namespace UMLTrainer.Domain
         public Test()
         {
             this.TestVariants = new HashSet<TestVariant>();
-            this.TestResults = new HashSet<TestResult>();
+            this.TestForTopics = new HashSet<TestForTopic>();
         }
     
         public string Id { get; set; }
         public string Question { get; set; }
         public byte[] IsOneAnswer { get; set; }
-        public string TopicId { get; set; }
     
-        public virtual Lection Lection { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TestVariant> TestVariants { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TestResult> TestResults { get; set; }
+        public virtual ICollection<TestForTopic> TestForTopics { get; set; }
     }
 }

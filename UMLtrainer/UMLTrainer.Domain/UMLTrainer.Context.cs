@@ -29,18 +29,19 @@ namespace UMLTrainer.Domain
         public virtual DbSet<Diagram> Diagrams { get; set; }
         public virtual DbSet<DiagramType> DiagramTypes { get; set; }
         public virtual DbSet<Element> Elements { get; set; }
-        public virtual DbSet<Lection> Lections { get; set; }
         public virtual DbSet<Node> Nodes { get; set; }
         public virtual DbSet<NodeValue> NodeValues { get; set; }
         public virtual DbSet<Relation> Relations { get; set; }
         public virtual DbSet<Shape> Shapes { get; set; }
+        public virtual DbSet<SystemUser> SystemUsers { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TaskElement> TaskElements { get; set; }
         public virtual DbSet<TaskResult> TaskResults { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
+        public virtual DbSet<TestForTopic> TestForTopics { get; set; }
         public virtual DbSet<TestResult> TestResults { get; set; }
         public virtual DbSet<TestVariant> TestVariants { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Topic> Topics { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

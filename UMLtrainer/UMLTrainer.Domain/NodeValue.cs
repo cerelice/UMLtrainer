@@ -15,7 +15,7 @@ namespace UMLTrainer.Domain
     public partial class NodeValue
     {
         public string Id { get; set; }
-        public string Value { get; set; }
+        public string Text { get; set; }
         public string PropertyId { get; set; }
     
         public virtual Node Node { get; set; }

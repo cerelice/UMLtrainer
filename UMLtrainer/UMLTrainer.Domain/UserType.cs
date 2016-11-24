@@ -17,16 +17,16 @@ namespace UMLTrainer.Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserType()
         {
+            this.SystemUsers = new HashSet<SystemUser>();
             this.TaskResults = new HashSet<TaskResult>();
-            this.Users = new HashSet<User>();
         }
     
         public string Id { get; set; }
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaskResult> TaskResults { get; set; }
+        public virtual ICollection<SystemUser> SystemUsers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<TaskResult> TaskResults { get; set; }
     }
 }
