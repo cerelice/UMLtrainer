@@ -18,7 +18,7 @@ namespace UMLTrainer.WebAPI.Controllers
 
         [HttpGet]
         [Route("id")]
-        public Test GetBeId(string id)
+        public Test GetBeId(int id)
         {
             return this.DbProvider.Tests.FirstOrDefault(x => x.Id == id);
         }
@@ -37,7 +37,7 @@ namespace UMLTrainer.WebAPI.Controllers
 
         [HttpPost]
         [Route("result")]
-        public void AddResult(TestResult result)
+        public TestResult AddResult(TestResult result)
         {
             if (result == null)
             {
@@ -45,6 +45,8 @@ namespace UMLTrainer.WebAPI.Controllers
             }
 
             this.DbProvider.TestResults.Add(result);
+
+            return result;
         }
     }
 }

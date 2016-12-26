@@ -57,6 +57,7 @@
     <Compile Include="Arrow.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="DbAdapter.cs" />
     <Compile Include="Diagram.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
@@ -66,6 +67,9 @@
     <Compile Include="Element.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NodeModel.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\TopicModel.cs" />
     <Compile Include="Node.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
@@ -78,6 +82,9 @@
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
     <Compile Include="Shape.cs">
+      <DependentUpon>UMLTrainer.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>UMLTrainer.tt</DependentUpon>
     </Compile>
     <Compile Include="SystemUser.cs">
@@ -132,6 +139,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>UMLTrainer.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <AdditionalFiles Include="RunCreateDatabase.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

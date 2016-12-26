@@ -14,10 +14,10 @@ namespace UMLTrainer.Domain
     
     public partial class TaskResult
     {
-        public string Id { get; set; }
-        public byte[] IsPassed { get; set; }
-        public string TaskId { get; set; }
-        public string UserId { get; set; }
+        public int Id { get; set; }
+        public Nullable<bool> IsPassed { get; set; }
+        public Nullable<int> TaskId { get; set; }
+        public Nullable<int> UserId { get; set; }
     
         public virtual Task Task { get; set; }
         public virtual UserType UserType { get; set; }

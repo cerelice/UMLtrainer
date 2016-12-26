@@ -21,10 +21,10 @@ namespace UMLTrainer.Domain
             this.TaskResults = new HashSet<TaskResult>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Question { get; set; }
-        public string DiagramId { get; set; }
-        public string TopicId { get; set; }
+        public Nullable<int> DiagramId { get; set; }
+        public Nullable<int> TopicId { get; set; }
     
         public virtual Diagram Diagram { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

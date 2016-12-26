@@ -20,10 +20,10 @@ namespace UMLTrainer.Domain
             this.Relations = new HashSet<Relation>();
         }
     
-        public string Id { get; set; }
-        public string EndForm { get; set; }
-        public string StartForm { get; set; }
-        public string LineForm { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> EndForm { get; set; }
+        public Nullable<int> StartForm { get; set; }
+        public Nullable<int> LineForm { get; set; }
         public string Text { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

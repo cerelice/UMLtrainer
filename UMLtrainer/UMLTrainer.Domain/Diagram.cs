@@ -21,9 +21,9 @@ namespace UMLTrainer.Domain
             this.Nodes = new HashSet<Node>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string DiagramTypeId { get; set; }
+        public Nullable<int> DiagramTypeId { get; set; }
     
         public virtual DiagramType DiagramType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

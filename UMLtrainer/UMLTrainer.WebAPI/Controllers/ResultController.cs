@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Http;
 using UMLTrainer.Domain;
-using UMLTrainer.WebAPI.Models;
+using UMLTrainer.Domain.Models;
 
 namespace UMLTrainer.WebAPI.Controllers
 {
@@ -21,14 +21,14 @@ namespace UMLTrainer.WebAPI.Controllers
 
         [HttpGet]
         [Route("id")]
-        public TaskResult GetTaskResultById(string id)
+        public TaskResult GetTaskResultById(int id)
         {
             return this.DbProvider.TaskResults.FirstOrDefault(x => x.Id == id);
         }
 
         [HttpGet]
         [Route("id")]
-        public TestResult GetTestResultById(string id)
+        public TestResult GetTestResultById(int id)
         {
             return this.DbProvider.TestResults.FirstOrDefault(x => x.Id == id);
         }

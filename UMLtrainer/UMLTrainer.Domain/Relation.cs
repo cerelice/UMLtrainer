@@ -14,10 +14,10 @@ namespace UMLTrainer.Domain
     
     public partial class Relation
     {
-        public string Id { get; set; }
-        public string ParentId { get; set; }
-        public string ChildId { get; set; }
-        public string ArrowId { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> ParentId { get; set; }
+        public Nullable<int> ChildId { get; set; }
+        public Nullable<int> ArrowId { get; set; }
     
         public virtual Arrow Arrow { get; set; }
         public virtual Node Node { get; set; }

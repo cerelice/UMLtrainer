@@ -14,11 +14,12 @@ namespace UMLTrainer.Domain
     
     public partial class TestResult
     {
-        public string Id { get; set; }
-        public string UserId { get; set; }
-        public byte[] IsPassed { get; set; }
-        public string TestId { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> UserId { get; set; }
+        public Nullable<bool> IsPassed { get; set; }
+        public Nullable<int> TestId { get; set; }
     
         public virtual SystemUser SystemUser { get; set; }
+        public virtual Test Test { get; set; }
     }
 }

@@ -19,12 +19,13 @@ USE [UMLTrainer]
 GO
 PRINT 'Creating database tables...'
 
+
 CREATE TABLE [Arrow]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[EndForm]            char(18)  NULL ,
-	[StartForm]          char(18)  NULL ,
-	[LineForm]           char(18)  NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
+	[EndForm]            int  NULL ,
+	[StartForm]          int  NULL ,
+	[LineForm]           int  NULL ,
 	[Text]               nvarchar(max)  NULL 
 )
 go
@@ -35,9 +36,9 @@ go
 
 CREATE TABLE [Diagram]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Name]               nvarchar(max)  NULL ,
-	[DiagramTypeId]      char(18)  NULL 
+	[DiagramTypeId]      int  NULL 
 )
 go
 
@@ -47,7 +48,7 @@ go
 
 CREATE TABLE [DiagramType]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Name]               nvarchar(max)  NULL 
 )
 go
@@ -58,10 +59,10 @@ go
 
 CREATE TABLE [Element]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Name]               nvarchar(max)  NULL ,
-	[ShapeId]            char(18)  NULL ,
-	[DiagramTypeId]      char(18)  NULL 
+	[ShapeId]            int  NULL ,
+	[DiagramTypeId]      int  NULL 
 )
 go
 
@@ -69,24 +70,11 @@ ALTER TABLE [Element]
 	ADD CONSTRAINT [XPKElement] PRIMARY KEY  CLUSTERED ([Id] ASC)
 go
 
-CREATE TABLE [Lection]
-( 
-	[Id]                 char(18)  NOT NULL ,
-	[Name]               nvarchar(max)  NULL ,
-	[Data]               char(18)  NULL ,
-	[CreatorId]          char(18)  NULL 
-)
-go
-
-ALTER TABLE [Lection]
-	ADD CONSTRAINT [XPKLection] PRIMARY KEY  CLUSTERED ([Id] ASC)
-go
-
 CREATE TABLE [Node]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[ElementId]          char(18)  NULL ,
-	[DiagramId]          char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[ElementId]          int  NULL ,
+	[DiagramId]          int  NULL 
 )
 go
 
@@ -96,9 +84,9 @@ go
 
 CREATE TABLE [NodeValue]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[Value]              nvarchar(max)  NULL ,
-	[PropertyId]         char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[Text]               nvarchar(max)  NULL ,
+	[PropertyId]         int  NULL 
 )
 go
 
@@ -108,10 +96,10 @@ go
 
 CREATE TABLE [Relation]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[ParentId]           char(18)  NULL ,
-	[ChildId]            char(18)  NULL ,
-	[ArrowId]            char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[ParentId]           int  NULL ,
+	[ChildId]            int  NULL ,
+	[ArrowId]            int  NULL 
 )
 go
 
@@ -121,7 +109,7 @@ go
 
 CREATE TABLE [Shape]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Name]               nvarchar(max)  NULL 
 )
 go
@@ -130,12 +118,24 @@ ALTER TABLE [Shape]
 	ADD CONSTRAINT [XPKShape] PRIMARY KEY  CLUSTERED ([Id] ASC)
 go
 
+CREATE TABLE [SystemUser]
+( 
+	[Id]                 int  IDENTITY(1,1) ,
+	[Name]               nvarchar(80)  NULL ,
+	[UserTypeId]         int  NULL 
+)
+go
+
+ALTER TABLE [SystemUser]
+	ADD CONSTRAINT [XPKUser] PRIMARY KEY  CLUSTERED ([Id] ASC)
+go
+
 CREATE TABLE [Task]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Question]           nvarchar(max)  NULL ,
-	[DiagramId]          char(18)  NULL ,
-	[TopicId]            char(18)  NULL 
+	[DiagramId]          int  NULL ,
+	[TopicId]            int  NULL 
 )
 go
 
@@ -145,9 +145,9 @@ go
 
 CREATE TABLE [TaskElement]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[NodeId]             char(18)  NULL ,
-	[TaskId]             char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[NodeId]             int  NULL ,
+	[TaskId]             int  NULL 
 )
 go
 
@@ -157,10 +157,10 @@ go
 
 CREATE TABLE [TaskResult]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[IsPassed]           binary  NULL ,
-	[TaskId]             char(18)  NULL ,
-	[UserId]             char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[IsPassed]           bit  NULL ,
+	[TaskId]             int  NULL ,
+	[UserId]             int  NULL 
 )
 go
 
@@ -170,10 +170,9 @@ go
 
 CREATE TABLE [Test]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Question]           nvarchar(max)  NULL ,
-	[IsOneAnswer]        binary  NULL ,
-	[TopicId]            char(18)  NULL 
+	[IsOneAnswer]        bit  NULL 
 )
 go
 
@@ -181,12 +180,24 @@ ALTER TABLE [Test]
 	ADD CONSTRAINT [XPKTest] PRIMARY KEY  CLUSTERED ([Id] ASC)
 go
 
+CREATE TABLE [TestForTopic]
+( 
+	[Id]                 int  IDENTITY(1,1) ,
+	[TopicId]            int  NULL ,
+	[TestId]             int  NULL 
+)
+go
+
+ALTER TABLE [TestForTopic]
+	ADD CONSTRAINT [XPKTestForTopic] PRIMARY KEY  CLUSTERED ([Id] ASC)
+go
+
 CREATE TABLE [TestResult]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[UserId]             char(18)  NULL ,
-	[IsPassed]           binary  NULL ,
-	[TestId]             char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[UserId]             int  NULL ,
+	[IsPassed]           bit  NULL ,
+	[TestId]             int  NULL 
 )
 go
 
@@ -196,10 +207,10 @@ go
 
 CREATE TABLE [TestVariant]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Text]               char(18)  NULL ,
-	[IsCorrect]          binary  NULL ,
-	[TestId]             char(18)  NULL 
+	[IsCorrect]          bit  NULL ,
+	[TestId]             int  NULL 
 )
 go
 
@@ -207,21 +218,22 @@ ALTER TABLE [TestVariant]
 	ADD CONSTRAINT [XPKTestVariant] PRIMARY KEY  CLUSTERED ([Id] ASC)
 go
 
-CREATE TABLE [User]
+CREATE TABLE [Topic]
 ( 
-	[Id]                 char(18)  NOT NULL ,
-	[Name]               nvarchar(80)  NULL ,
-	[UserTypeId]         char(18)  NULL 
+	[Id]                 int  IDENTITY(1,1) ,
+	[Name]               nvarchar(max)  NULL ,
+	[Text]               char(18)  NULL ,
+	[CreatorId]          int  NULL 
 )
 go
 
-ALTER TABLE [User]
-	ADD CONSTRAINT [XPKUser] PRIMARY KEY  CLUSTERED ([Id] ASC)
+ALTER TABLE [Topic]
+	ADD CONSTRAINT [XPKLection] PRIMARY KEY  CLUSTERED ([Id] ASC)
 go
 
 CREATE TABLE [UserType]
 ( 
-	[Id]                 char(18)  NOT NULL ,
+	[Id]                 int  IDENTITY(1,1) ,
 	[Name]               nvarchar(50)  NULL 
 )
 go
@@ -246,13 +258,6 @@ go
 
 ALTER TABLE [Element]
 	ADD CONSTRAINT [R_33] FOREIGN KEY ([DiagramTypeId]) REFERENCES [DiagramType]([Id])
-		ON DELETE NO ACTION
-		ON UPDATE NO ACTION
-go
-
-
-ALTER TABLE [Lection]
-	ADD CONSTRAINT [R_32] FOREIGN KEY ([CreatorId]) REFERENCES [User]([Id])
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -297,6 +302,13 @@ ALTER TABLE [Relation]
 go
 
 
+ALTER TABLE [SystemUser]
+	ADD CONSTRAINT [R_20] FOREIGN KEY ([UserTypeId]) REFERENCES [UserType]([Id])
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+
 ALTER TABLE [Task]
 	ADD CONSTRAINT [R_13] FOREIGN KEY ([DiagramId]) REFERENCES [Diagram]([Id])
 		ON DELETE NO ACTION
@@ -304,7 +316,7 @@ ALTER TABLE [Task]
 go
 
 ALTER TABLE [Task]
-	ADD CONSTRAINT [R_17] FOREIGN KEY ([TopicId]) REFERENCES [Lection]([Id])
+	ADD CONSTRAINT [R_17] FOREIGN KEY ([TopicId]) REFERENCES [Topic]([Id])
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -336,21 +348,27 @@ ALTER TABLE [TaskResult]
 go
 
 
-ALTER TABLE [Test]
-	ADD CONSTRAINT [R_16] FOREIGN KEY ([TopicId]) REFERENCES [Lection]([Id])
+ALTER TABLE [TestForTopic]
+	ADD CONSTRAINT [R_30] FOREIGN KEY ([TopicId]) REFERENCES [Topic]([Id])
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+go
+
+ALTER TABLE [TestForTopic]
+	ADD CONSTRAINT [R_32] FOREIGN KEY ([TestId]) REFERENCES [Test]([Id])
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
 
 
 ALTER TABLE [TestResult]
-	ADD CONSTRAINT [R_24] FOREIGN KEY ([UserId]) REFERENCES [User]([Id])
+	ADD CONSTRAINT [R_24] FOREIGN KEY ([UserId]) REFERENCES [SystemUser]([Id])
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
 
 ALTER TABLE [TestResult]
-	ADD CONSTRAINT [R_30] FOREIGN KEY ([TestId]) REFERENCES [Test]([Id])
+	ADD CONSTRAINT [R_35] FOREIGN KEY ([TestId]) REFERENCES [Test]([Id])
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
@@ -363,11 +381,12 @@ ALTER TABLE [TestVariant]
 go
 
 
-ALTER TABLE [User]
-	ADD CONSTRAINT [R_20] FOREIGN KEY ([UserTypeId]) REFERENCES [UserType]([Id])
+ALTER TABLE [Topic]
+	ADD CONSTRAINT [R_36] FOREIGN KEY ([CreatorId]) REFERENCES [SystemUser]([Id])
 		ON DELETE NO ACTION
 		ON UPDATE NO ACTION
 go
+
 GO
 PRINT 'Tables created successfully...'
 GO

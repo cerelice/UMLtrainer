@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using UMLTrainer.Domain;
-using UMLTrainer.WebAPI.Models;
+using UMLTrainer.Domain.Models;
 
 namespace UMLTrainer.WebAPI.Controllers
 {
@@ -27,7 +27,7 @@ namespace UMLTrainer.WebAPI.Controllers
                             cm => cm.TestId,
                             (c, cm) => new { Test = c, TestForTopic = cm })
                         .Where(x => x.TestForTopic.TopicId == topic.Id).Select(x => x.Test),
-                    Diagram = this.DbProvider.Tasks.FirstOrDefault(x => x.TopicId == topic.Id)
+                    Task = this.DbProvider.Tasks.FirstOrDefault(x => x.TopicId == topic.Id)
                 });
             }
 
@@ -36,7 +36,7 @@ namespace UMLTrainer.WebAPI.Controllers
 
         [HttpGet]
         [Route("id")]
-        public TopicModel GetBeId(string id)
+        public TopicModel GetBeId(int id)
         {
             return new TopicModel
             {
@@ -48,20 +48,32 @@ namespace UMLTrainer.WebAPI.Controllers
                             cm => cm.TestId,
                             (c, cm) => new { Test = c, TestForTopic = cm })
                         .Where(x => x.TestForTopic.TopicId == id).Select(x => x.Test),
-                Diagram = this.DbProvider.Tasks.FirstOrDefault(x => x.TopicId == id)
+                Task = this.DbProvider.Tasks.FirstOrDefault(x => x.TopicId == id)
             };
         }
 
         [HttpPost]
         [Route("add")]
-        public void Post(Topic topic)
+        public Topic Post(Topic topic)
         {
             if (topic == null)
             {
                 throw new ArgumentNullException("topic");
             }
 
-            this.DbProvider.Topics.Add(topic);
+            return this.DbProvider.Save(topic);
+        }
+
+        [HttpPost]
+        [Route("add")]
+        public Topic Post(Topic topic)
+        {
+            if (topic == null)
+            {
+                throw new ArgumentNullException("topic");
+            }
+
+            return this.DbProvider.Save(topic);
         }
     }
 }

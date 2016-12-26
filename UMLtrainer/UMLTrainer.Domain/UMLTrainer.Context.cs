@@ -33,6 +33,7 @@ namespace UMLTrainer.Domain
         public virtual DbSet<NodeValue> NodeValues { get; set; }
         public virtual DbSet<Relation> Relations { get; set; }
         public virtual DbSet<Shape> Shapes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<SystemUser> SystemUsers { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<TaskElement> TaskElements { get; set; }

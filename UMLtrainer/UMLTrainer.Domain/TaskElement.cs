@@ -14,9 +14,9 @@ namespace UMLTrainer.Domain
     
     public partial class TaskElement
     {
-        public string Id { get; set; }
-        public string NodeId { get; set; }
-        public string TaskId { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> NodeId { get; set; }
+        public Nullable<int> TaskId { get; set; }
     
         public virtual Node Node { get; set; }
         public virtual Task Task { get; set; }

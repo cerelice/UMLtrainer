@@ -20,10 +20,10 @@ namespace UMLTrainer.Domain
             this.Nodes = new HashSet<Node>();
         }
     
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string ShapeId { get; set; }
-        public string DiagramTypeId { get; set; }
+        public Nullable<int> ShapeId { get; set; }
+        public Nullable<int> DiagramTypeId { get; set; }
     
         public virtual DiagramType DiagramType { get; set; }
         public virtual Shape Shape { get; set; }

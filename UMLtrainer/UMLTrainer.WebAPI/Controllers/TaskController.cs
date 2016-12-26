@@ -18,14 +18,14 @@ namespace UMLTrainer.WebAPI.Controllers
 
         [HttpGet]
         [Route("id")]
-        public Task GetBeId(string id)
+        public Task GetBeId(int id)
         {
             return this.DbProvider.Tasks.FirstOrDefault(x => x.Id == id);
         }
 
         [HttpPost]
         [Route("add")]
-        public void Post(Task task)
+        public Task Post(Task task)
         {
             if (task == null)
             {
@@ -33,11 +33,14 @@ namespace UMLTrainer.WebAPI.Controllers
             }
 
             this.DbProvider.Tasks.Add(task);
+            this.DbProvider.SaveChanges();
+
+            return task;
         }
 
         [HttpPost]
         [Route("result")]
-        public void AddResult(TaskResult result)
+        public TaskResult AddResult(TaskResult result)
         {
             if (result == null)
             {
@@ -45,6 +48,8 @@ namespace UMLTrainer.WebAPI.Controllers
             }
 
             this.DbProvider.TaskResults.Add(result);
+
+            return result;
         }
     }
 }

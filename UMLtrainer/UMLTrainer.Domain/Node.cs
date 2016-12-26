@@ -23,9 +23,9 @@ namespace UMLTrainer.Domain
             this.Relations1 = new HashSet<Relation>();
         }
     
-        public string Id { get; set; }
-        public string ElementId { get; set; }
-        public string DiagramId { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> ElementId { get; set; }
+        public Nullable<int> DiagramId { get; set; }
     
         public virtual Diagram Diagram { get; set; }
         public virtual Element Element { get; set; }

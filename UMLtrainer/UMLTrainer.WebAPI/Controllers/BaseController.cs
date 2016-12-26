@@ -11,11 +11,11 @@ namespace UMLTrainer.WebAPI.Controllers
 {
     public class BaseController : ApiController
     {
-        protected readonly UMLTrainerEntities DbProvider;
+        protected readonly DbAdapter DbProvider;
 
         public BaseController()
         {
-            this.DbProvider = new UMLTrainerEntities();
+            this.DbProvider = new DbAdapter(new UMLTrainerEntities());
         }
     }
 }
